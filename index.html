@@ -157,7 +157,7 @@ updateRegionalUC();
 <script id="wrb-checked-pricing">
 const wrbPacks=[
 {n:30,tr:20.99,trWas:22.99,base:30,openingBonus:0,kwBonus:0},
-{n:60,tr:41.99,trWas:45.99,base:60,openingBonus:60,kwBonus:0,first:true},
+{n:60,tr:41.99,trWas:null,base:60,openingBonus:60,kwBonus:0,first:true},
 {n:300,tr:209.99,trWas:229.99,base:300,openingBonus:300,kwBonus:25,first:true},
 {n:600,tr:419.99,trWas:459.99,base:600,openingBonus:600,kwBonus:60,first:true},
 {n:1800,tr:1049.99,trWas:1149.99,base:1500,openingBonus:300,kwBonus:300},
@@ -174,7 +174,7 @@ const bonus=document.createElement('div');bonus.className='wrb-bonus';
 bonus.innerHTML='<div>'+p.base.toLocaleString('en-US')+' UC أساسية + <b>'+p.bonus.toLocaleString('en-US')+' UC إضافية</b></div><span class="total">'+(p.base+p.bonus).toLocaleString('en-US')+' UC</span>'+(p.firstBonus?'<span class="first">البونص المضاعف لأول شحن فقط، حسب أهلية اللاعب</span>':'');
 const price=document.createElement('div');price.className='wrb-price';
 if(priceMode==='opening'){
-price.innerHTML='<del>'+wrbPrice(p.trWas*RATE_TRY_KWD)+'</del><strong>'+wrbPrice(p.tr*RATE_TRY_KWD)+'</strong><small>سعر تركي محوّل تقديرياً؛ يُؤكّد قبل الدفع</small>';
+price.innerHTML=(p.trWas==null?'':'<del>'+wrbPrice(p.trWas*RATE_TRY_KWD)+'</del>')+'<strong>'+wrbPrice(p.tr*RATE_TRY_KWD)+'</strong><small>سعر تركي محوّل تقديرياً؛ يُؤكّد قبل الدفع</small>';
 }else{
 price.innerHTML='<strong>السعر الكويتي قيد التأكيد</strong><small>بونص الكويت موضح أعلاه؛ يُحدَّد السعر قبل التحويل</small>';
 }
